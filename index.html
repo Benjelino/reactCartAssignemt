@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="js/react.development.js"></script>
+    <script crossorigin src="js/react-dom.development.js"></script>
+    <script crossorigin src="js/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+        
+    <script type="text/jsx">
+
+        const data = [  {id: 1, text: "emma"},
+                        {id: 2, text: "Ben"},
+                        {id: 3, text: "yaw"}
+      ];
+
+      function addItem(){
+        let input = document.getElementById("mInput").value;
+        let id = data.length + 1;
+        data.push({id: id, text: input})
+    };
+        
+        function Take(){
+            return(
+                <div>
+                    <label >Type the item</label>
+                    <input type="text" id="mInput"/>
+                    <button id="add" onClick={addItem()}>Add</button>
+                </div>
+            );
+        }
+        function App(props){
+            return(
+                <div className="container">
+                    <ul>
+                        <li>{props.text} <button>delete</button></li>
+                    </ul>
+                </div>
+            );
+        }
+
+
+        let applist = data.map(i=> <App key={i.id}  text={i.text}/>);
+        ReactDOM.render(
+            <React.StrictMode>
+                <Take/>
+                {applist}
+            </React.StrictMode>, document.getElementById("root")
+        );
+    </script>
+</body>
+</html>
