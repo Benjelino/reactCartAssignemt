@@ -42,13 +42,11 @@
             console.log(mInput);
             let id = data.length + 1;
             data.push({id: id, text: mInput});
-            applist;
+            let applist = data.map(i=> <App key={i.id}  text={i.text}/>);
             ReactDOM.render(
             <React.StrictMode>
                 {applist}
-            </React.StrictMode>, document.getElementById("root")
-        );
-
+            </React.StrictMode>, document.getElementById("root"));
         };
 
         
